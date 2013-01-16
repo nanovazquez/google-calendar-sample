@@ -20,16 +20,18 @@ namespace GoogleCalendarSample.Controllers
 
         public ActionResult ListEvents(DateTime startDate, DateTime endDate)
         {
-            string calendarId = string.Empty;
+            UserProfile userProfile = null;
             using(var context = new UsersContext())
             {
-                calendarId = context.UserProfiles.FirstOrDefault(c => c.UserName == User.Identity.Name).Email;
+                userProfile = context.UserProfiles.FirstOrDefault(c => c.UserName == User.Identity.Name);
             }
+
+            if (userProfile == null) return RedirectToAction("Register", "Account");
 
             var authenticator = GetAuthenticator();
 
             var service = new GoogleCalendarServiceProxy(authenticator);
-            var model = service.GetEvents(calendarId, startDate, endDate);
+            var model = service.GetEvents(userProfile.Email, startDate, endDate);
 
             ViewBag.StartDate = startDate.ToShortDateString();
             ViewBag.EndDate = endDate.ToShortDateString();

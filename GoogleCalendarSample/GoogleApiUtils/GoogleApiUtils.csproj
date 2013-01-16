@@ -46,6 +46,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Google.Apis.Calendar.v3.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\Libs\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
