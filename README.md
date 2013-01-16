@@ -8,16 +8,21 @@ An ASP.NET MVC 4 applicacition that demonstrates how to obtain &amp; manage auth
 
 You need to update the Web.config file with your Google API Service keys (ClientId, ClientSecret and RedirectUri). You can obtain/find this information in the [Google API Console](https://code.google.com/apis/console) 
 
-  <?xml version="1.0" encoding="utf-8"?>
-  <configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  ...
+  <appSettings>
     ...
-    <appSettings>
-      ...
-      <!-- GoogleAPI credentials -->
-      <add key="ClientId" value="{CLIENT-ID}" />
-      <add key="ClientSecret" value="{CLIENT-SECRETD}" />
-      <add key="RedirectUri" value="{REDIRECT-URI}" />
-    </appSettings>
-    <system.web>
+    <!-- GoogleAPI credentials -->
+    <add key="ClientId" value="{CLIENT-ID}" />
+    <add key="ClientSecret" value="{CLIENT-SECRETD}" />
+    <add key="RedirectUri" value="{REDIRECT-URI}" />
+  </appSettings>
+  <system.web>
+  ...
+</configuration>
+</xml>
+```
 
 Happy coding!
