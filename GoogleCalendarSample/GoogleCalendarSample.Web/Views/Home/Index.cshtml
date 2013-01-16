@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GoogleApiUtils.GoogleCalendarApi.CalendarEvent>
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Your Google Calendar</h1>
+            </hgroup>
+            <label>Filter your events by date: </label>
+            @using (Html.BeginForm("ListEvents", "Home"))
+            {
+                <input class="date" name="startDate" type="date" value="@ViewBag.StartDate" />
+                <input class="date" name="endDate" type="date" value="@ViewBag.EndDate" />
+                <button>Get your events</button>
+            }
+        </div>
+    </section>
+}
+@if (Model == null)
+{
+    <h3>You don't have events in your calendar within that range. Click the "Add event" button located at the top-right to add new ones.</h3>
+}
+else
+{
+    <h3>Your Events:</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.StartDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@item.EndDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@item.Location</td>
+                <td>@Html.ActionLink("Edit", "Edit", "CalendarEvent", new{ calendarId = item.CalendarId, eventId = item.Id },  null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "CalendarEvent", new{ calendarId = item.CalendarId, eventId = item.Id }, null)</td>
+            </tr>
+        }
+    </table>
+
+}

@@ -1,0 +1,52 @@
+﻿@model GoogleApiUtils.GoogleCalendarApi.CalendarEvent
+@{
+    ViewBag.Title = "Create Event";
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Create a new event.</h2>
+</hgroup>
+
+@using (Html.BeginForm("Create", "CalendarEvent", FormMethod.Post) )
+{
+    <fieldset>
+        <legend>Create a new event for your calendar</legend>
+
+        @Html.ValidationSummary()
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.CalendarId)
+                @Html.TextBoxFor(m => m.CalendarId)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Location)
+                @Html.TextBoxFor(m => m.Location)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Description)
+                @Html.TextAreaFor(m => m.Description, new { Style = "width:300px;" } )
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartDate)
+                @Html.EditorFor(m => m.StartDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.EndDate)
+                @Html.EditorFor(m => m.EndDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ColorId)
+                @Html.DropDownList("ColorId", (SelectList)ViewBag.Colors, new { Style = "width:310px; font-size: 1.2em" })
+            </li>
+        </ol>
+        <input type="submit" value="Create" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
