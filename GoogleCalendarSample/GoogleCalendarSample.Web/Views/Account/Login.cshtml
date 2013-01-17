@@ -6,10 +6,10 @@
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
+    <h2>Use a local account to log in.</h2>
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
