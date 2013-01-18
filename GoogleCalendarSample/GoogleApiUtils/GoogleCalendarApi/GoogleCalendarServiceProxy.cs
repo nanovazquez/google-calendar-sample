@@ -100,7 +100,6 @@ namespace GoogleApiUtils.GoogleCalendarApi
             };
         }
 
-
         // see https://developers.google.com/google-apps/calendar/v3/reference/events/insert
         public bool CreateEvent(CalendarEvent calendarEvent)
         {
