@@ -17,7 +17,9 @@ You need to update the Web.config file with your Google API Service keys (Client
     <!-- GoogleAPI credentials -->
     <add key="ClientId" value="{CLIENT-ID}" />
     <add key="ClientSecret" value="{CLIENT-SECRETD}" />
-    <add key="RedirectUri" value="{REDIRECT-URI}" />
+  
+    <!-- Update the port of the Redirect URI (don't forget to set this value also in the Google API Console) -->
+	  <add key="RedirectUri" value="http://localhost:{PORT}/Account/GoogleAuthorization" />
   </appSettings>
   <system.web>
   ...
